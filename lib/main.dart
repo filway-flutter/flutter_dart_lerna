@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dart_lerna/data_type.dart';
+import 'package:flutter_dart_lerna/function_learn.dart';
+import 'package:flutter_dart_lerna/generic_learn.dart';
 import 'package:flutter_dart_lerna/oop_learn.dart';
 
+// 入口方法
 void main() {
   runApp(const MyApp());
 }
@@ -36,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     _oopLearn();
+    _functionLearn();
+    _genericLearn();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -43,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: ListView(
           children: <Widget>[
-            DataType()
+            //DataType()
           ],
         ),
       ),
@@ -69,4 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
     StudyFlutter studyFlutter = StudyFlutter();
     studyFlutter.study();
   }
+
+  void _functionLearn() {
+    TestFunction testFunction = TestFunction();
+    testFunction.start();
+  }
+
+  void _genericLearn() {
+    TestGeneric testGeneric = TestGeneric();
+    testGeneric.start();
+  }
 }
+
+

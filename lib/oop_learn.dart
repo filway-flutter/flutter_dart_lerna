@@ -12,18 +12,21 @@ class Student extends Person {
   // name, age交给父类进行初始化
   // country 默认参数
   // city为可选参数
-  Student(this._school, String name, int age, {this.city, this.country = '中国'}) : name='$country.$city.$name', super(name, age) {
+  Student(this._school, String name, int age, {this.city, this.country = '中国'})
+      : name = '$country.$city.$name',
+        super(name, age) {
     print('构造方法体不是必须的');
   }
 
   @override
   String toString() {
-    return 'name: $name school: ${this._school}, city: $city, country: $country ${super.toString()}';;
+    return 'name: $name school: ${this._school}, city: $city, country: $country ${super.toString()}';
+    ;
   }
 
   // 命名构造方法
-  Student.cover(Student stu, this.name): super(stu.name, stu.age) {
-   print('命名构造方法');
+  Student.cover(Student stu, this.name) : super(stu.name, stu.age) {
+    print('命名构造方法');
   }
 
   // 命名工厂构造方法: factory [类名+.+方法名]
@@ -41,11 +44,11 @@ class Student extends Person {
   static doPrint(String str) {
     print('doPrint: $str');
   }
-
 }
 
 class Logger {
   static Logger? _cache;
+
   // 工厂构造方法, 工厂模式
   factory Logger() {
     if (_cache == null) {
@@ -66,6 +69,7 @@ class Logger {
 class Person {
   String name;
   int age;
+
   Person(this.name, this.age); //初始化变量, 标准构造方法
   // 重写父类方法
   @override
@@ -73,7 +77,6 @@ class Person {
     return 'name: $name, age: $age';
   }
 }
-
 
 class StudyFlutter extends Study {
   @override
@@ -90,7 +93,14 @@ abstract class Study {
 }
 
 // mixins 多个类结构中复用代码
-// 要使用mixins, 在with关键字后面跟上一个或者多个mixin的名字 (用逗号分割) with要用在extends关键词之前
+// 要使用mixins, 在with关键字后面跟上一个或者多个mixin的名字 (用逗号分割) with要用在extends关键词之后
 // mixins的特征: 实现 mixin, 就创建一个继承 Object 类的子类(不能继承其他类), 不能声明任何的构造方法，不能调用父类的super
 
+class Test extends Person with Study {
+  Test(String name, int age) : super(name, age);
 
+  @override
+  void study() {
+    // TODO: implement study
+  }
+}
